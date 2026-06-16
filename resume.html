@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacob Hadida — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* === BRAND TOKENS — edit here === */
+    :root {
+      --c-primary:  #2C2F1E;
+      --c-accent:   #9AA89A;
+      --c-text:     #4A4A45;
+      --c-muted:    #7A7975;
+      --c-border:   #E2E0DA;
+      --c-bg:       #F7F6F2;
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-body:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--c-bg);
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--c-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === RESUME WRAPPER === */
+    .resume {
+      max-width: 760px;
+      margin: 32px auto;
+      background: white;
+      padding: 44px 48px;
+      box-shadow: 0 2px 24px rgba(44,47,30,0.1);
+    }
+
+    /* === HEADER === */
+    .r-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      border-bottom: 2px solid var(--c-primary);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .r-name {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      color: var(--c-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .r-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--c-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .r-contact {
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--c-muted);
+      line-height: 1.75;
+    }
+
+    .r-contact a {
+      color: var(--c-primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .r-contact a:hover { text-decoration: underline; }
+
+    /* === SECTIONS === */
+    .r-section {
+      margin-bottom: 18px;
+    }
+
+    .r-section-title {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .r-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--c-border);
+    }
+
+    /* === SUMMARY === */
+    .r-summary {
+      font-size: 0.9rem;
+      color: var(--c-text);
+      line-height: 1.65;
+    }
+
+    /* === SKILLS === */
+    .r-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+    }
+
+    .r-skill {
+      font-size: 0.8rem;
+      color: var(--c-text);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .r-skill::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      flex-shrink: 0;
+    }
+
+    /* === EXPERIENCE === */
+    .r-job {
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .r-job:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .r-job-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+
+    .r-job-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--c-primary);
+    }
+
+    .r-job-dates {
+      font-size: 0.78rem;
+      color: var(--c-muted);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .r-job-company {
+      font-size: 0.8rem;
+      color: var(--c-accent);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .r-bullets {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .r-bullets li {
+      font-size: 0.83rem;
+      color: var(--c-text);
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .r-bullets li::before {
+      content: '·';
+      position: absolute;
+      left: 3px;
+      color: var(--c-accent);
+      font-weight: 700;
+    }
+
+    /* === PROJECTS === */
+    .r-project {
+      margin-bottom: 6px;
+      font-size: 0.83rem;
+      line-height: 1.5;
+    }
+
+    .r-project-name {
+      font-weight: 600;
+      color: var(--c-primary);
+    }
+
+    /* === EDUCATION & CERTS === */
+    .r-edu {
+      margin-bottom: 6px;
+    }
+
+    .r-edu-degree {
+      font-weight: 600;
+      font-size: 0.87rem;
+      color: var(--c-primary);
+    }
+
+    .r-edu-school {
+      font-size: 0.8rem;
+      color: var(--c-muted);
+    }
+
+    .r-certs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 24px;
+    }
+
+    .r-cert {
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .r-cert-name { color: var(--c-text); }
+    .r-cert-issuer { color: var(--c-muted); font-size: 0.75rem; white-space: nowrap; }
+
+    /* === PRINT STYLES === */
+    @media print {
+      body { background: white; font-size: 12px; }
+      .resume { margin: 0; padding: 0.4in 0.45in; box-shadow: none; max-width: 100%; }
+      .r-name { font-size: 1.9rem; }
+      @page { size: letter; margin: 0; }
+      a { color: inherit; text-decoration: none; }
+    }
+
+    /* === SCREEN-ONLY PRINT BUTTON === */
+    .print-bar {
+      max-width: 760px;
+      margin: 0 auto 0;
+      padding: 12px 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .print-btn {
+      background: var(--c-primary);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+
+    .print-btn:hover { background: #3d4228; }
+
+    @media print { .print-bar { display: none; } }
+  </style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+</div>
+
+<article class="resume" role="main">
+
+  <!-- HEADER -->
+  <header class="r-header">
+    <div>
+      <h1 class="r-name">Jacob Hadida</h1>
+      <!-- REPLACE: Title line -->
+      <p class="r-title">Business Operations &amp; Automation Consultant</p>
+    </div>
+    <address class="r-contact" style="font-style:normal;">
+      <!-- REPLACE: Contact details -->
+      Aventura, FL<br>
+      <a href="tel:2152606210">(215) 260-6210</a><br>
+      <a href="mailto:hadidajconsulting@gmail.com">hadidajconsulting@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/jacob-j-hadida-zoreacapital1/" target="_blank" rel="noopener">LinkedIn Profile</a>
+    </address>
+  </header>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <section class="r-section" aria-labelledby="sec-summary">
+    <h2 class="r-section-title" id="sec-summary">Professional Summary</h2>
+    <p class="r-summary">
+      Results-driven operations consultant specializing in AI-powered workflow automation, supply chain compliance intelligence, and CRM data management. Proven track record deploying production-grade automation pipelines that reduce manual operational overhead by 75–90% and accelerate decision-making for financial services and healthcare-adjacent supply chain clients.
+    </p>
+  </section>
+
+  <!-- CORE SKILLS -->
+  <section class="r-section" aria-labelledby="sec-skills">
+    <h2 class="r-section-title" id="sec-skills">Core Competencies</h2>
+    <div class="r-skills" role="list">
+      <span class="r-skill" role="listitem">Workflow Automation (n8n)</span>
+      <span class="r-skill" role="listitem">AI / LLM Integration</span>
+      <span class="r-skill" role="listitem">Supply Chain Compliance</span>
+      <span class="r-skill" role="listitem">CAFTA-DR Trade Compliance</span>
+      <span class="r-skill" role="listitem">FDA Regulatory Intelligence</span>
+      <span class="r-skill" role="listitem">Import Operations</span>
+      <span class="r-skill" role="listitem">CRM Management (Ellucian, MS Dynamics)</span>
+      <span class="r-skill" role="listitem">SQL &amp; Data Analysis</span>
+      <span class="r-skill" role="listitem">Tableau</span>
+      <span class="r-skill" role="listitem">Process Optimization</span>
+      <span class="r-skill" role="listitem">Investor Relations Operations</span>
+      <span class="r-skill" role="listitem">Google Sheets &amp; Reporting</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="r-section" aria-labelledby="sec-exp">
+    <h2 class="r-section-title" id="sec-exp">Professional Experience</h2>
+
+    <div class="r-job">
+      <div class="r-job-header">
+        <span class="r-job-title">Founder &amp; Principal Consultant</span>
+        <span class="r-job-dates">May 2024 – Present</span>
+      </div>
+      <p class="r-job-company">Hadida Consulting LLC · Miami-Fort Lauderdale Area, FL · Contract/Remote</p>
+      <ul class="r-bullets">
+        <li>Architect and deploy end-to-end AI automation pipelines that eliminate manual monitoring workflows, reducing operational overhead by an estimated 75–90% per workflow across supply chain and compliance functions</li>
+        <li>Design CRM data structures, automated reporting systems, and regulatory intelligence tools improving data quality and decision velocity for regulated-industry clients</li>
+        <li>Developed CAFTA-DR trade compliance automation for a medical device import operation (El Salvador → Miami): SRS authorization tracking, CoO validation, and pre-shipment compliance checklists preserving duty-free and MPF-exempt treatment across 10+ monthly shipments</li>
+        <li>Built FDA category intelligence system monitoring openFDA, MAUDE, and 510(k) databases for supply chain clients; automated daily briefs delivered with &lt;10 min end-to-end runtime</li>
+      </ul>
+    </div>
+
+    <div class="r-job">
+      <div class="r-job-header">
+        <span class="r-job-title">Business Operations Consultant → Investor Relations</span>
+        <span class="r-job-dates">Jul 2024 – Present</span>
+      </div>
+      <p class="r-job-company">Zorea Capital LP · Miami-Fort Lauderdale Area, FL · Contract/Remote</p>
+      <ul class="r-bullets">
+        <li>Built and operate a production AI intelligence pipeline monitoring 26 portfolio companies daily across global exchanges; automated HTML reports delivered by 7 AM with full Google Sheets audit logging, replacing an estimated 45–60 min/day of manual monitoring</li>
+        <li>Streamlined investor relations CRM workflows and reporting infrastructure for a boutique value-investing fund managing separately managed accounts for HNW clients</li>
+        <li>Promoted to Investor Relations (Apr 2026); apply Series 65-credentialed expertise to client communications, portfolio reporting, and operational support</li>
+      </ul>
+    </div>
+
+    <div class="r-job">
+      <div class="r-job-header">
+        <span class="r-job-title">Data Analyst</span>
+        <span class="r-job-dates">Aug 2022 – Jun 2024</span>
+      </div>
+      <p class="r-job-company">Barry University · Miami-Dade County, FL · Full-Time</p>
+      <ul class="r-bullets">
+        <li>Managed and optimized relational database infrastructure (Ellucian CRM Advance) supporting a 1,034+ record Presidential contacts consolidation and fundraising analytics program</li>
+        <li>Designed automated data workflows for import, validation, and update operations, reducing manual processing time and improving data integrity for executive-level reporting</li>
+        <li>Produced time-sensitive fundraising and donor engagement reports for internal and external stakeholders, working with comprehensive confidential datasets</li>
+        <li>Led event participant import management through Team Dynamix across high-volume annual data cycles</li>
+      </ul>
+    </div>
+
+    <div class="r-job">
+      <div class="r-job-header">
+        <span class="r-job-title">Cryptocurrency Systems Engineer</span>
+        <span class="r-job-dates">May 2021 – Aug 2022</span>
+      </div>
+      <p class="r-job-company">Self-Employed · Miami, FL · Freelance</p>
+      <ul class="r-bullets">
+        <li>Designed, built, and optimized cryptocurrency mining and farming systems for international clients; managed hardware procurement, deployment logistics, and remote operations</li>
+        <li>Improved system performance through iterative hardware/software optimization in high-availability computing environments</li>
+      </ul>
+    </div>
+
+    <div class="r-job">
+      <div class="r-job-header">
+        <span class="r-job-title">Event &amp; Artist Operations Manager</span>
+        <span class="r-job-dates">Jan 2017 – Aug 2022</span>
+      </div>
+      <p class="r-job-company">Lluvia Records · Miami, FL · Full-Time</p>
+      <ul class="r-bullets">
+        <li>Coordinated logistics and operations for large-scale events with attendance exceeding 500 people; managed vendor contracts, production timelines, and on-site execution</li>
+        <li>Oversaw full-cycle budgeting, bookkeeping, and financial audits across company operations</li>
+        <li>Managed artist rosters and cross-functional production teams across a high-volume portfolio</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="r-section" aria-labelledby="sec-proj">
+    <h2 class="r-section-title" id="sec-proj">Portfolio Projects</h2>
+    <div class="r-project">
+      <span class="r-project-name">AI Intelligence Pipeline (Production)</span> —
+      Daily AI-powered monitoring for 26+ entities; n8n + LLM classification + Gmail delivery; replaces 45–60 min/day of manual monitoring.
+    </div>
+    <div class="r-project">
+      <span class="r-project-name">FDA Category Intelligence Monitor</span> —
+      Automated openFDA + MAUDE surveillance for medical device supply chain; daily brief &lt;10 min end-to-end.
+    </div>
+    <div class="r-project">
+      <span class="r-project-name">CAFTA-DR Compliance Automation</span> —
+      Pre-shipment CoO validation + SRS authorization tracker for El Salvador import lane; preserves duty-free and MPF-exempt treatment.
+    </div>
+    <div class="r-project">
+      <span class="r-project-name">Land Acquisition Intelligence Pipeline</span> —
+      Multi-agent Relevance AI system (Regrid Parcel API) automating rural land prospecting from county data to mail-ready acquisition batches of 200–300 qualified owners; zero-tolerance exclusion rules with full audit log; no-code client-owned operation.
+    </div>
+  </section>
+
+  <!-- TWO-COLUMN LOWER SECTION -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;">
+
+    <!-- EDUCATION -->
+    <section class="r-section" aria-labelledby="sec-edu" style="margin-bottom:0;">
+      <h2 class="r-section-title" id="sec-edu">Education</h2>
+      <div class="r-edu">
+        <p class="r-edu-degree">Management Information Systems &amp; Services</p>
+        <p class="r-edu-school">Miami Dade College · Miami, FL</p>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="r-section" aria-labelledby="sec-certs" style="margin-bottom:0;">
+      <h2 class="r-section-title" id="sec-certs">Certifications</h2>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <div class="r-cert">
+          <span class="r-cert-name">Foundations: Data, Data, Everywhere</span>
+          <span class="r-cert-issuer">Google</span>
+        </div>
+        <div class="r-cert">
+          <span class="r-cert-name">Google AI Essentials (5-course)</span>
+          <span class="r-cert-issuer">Google</span>
+        </div>
+        <div class="r-cert">
+          <span class="r-cert-name">Visualization with Tableau</span>
+          <span class="r-cert-issuer">UC Davis</span>
+        </div>
+        <div class="r-cert">
+          <span class="r-cert-name">SQL for Data Science</span>
+          <span class="r-cert-issuer">UC Davis</span>
+        </div>
+        <div class="r-cert">
+          <span class="r-cert-name">Series 65 · Passed Apr 2026</span>
+          <span class="r-cert-issuer">NASAA</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</article>
+
+</body>
+</html>

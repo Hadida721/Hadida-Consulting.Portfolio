@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jacob Hadida — Business Operations &amp; Automation Consultant. AI-powered workflows for supply chain and compliance operations.">
+  <title>Jacob Hadida | Hadida Consulting LLC</title>
+
+  <!-- Google Fonts: DM Serif Display (display) + Inter (body) -->
+  <!-- Remove this link if you want no external dependencies and add fallbacks below -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       BRAND TOKENS — Edit these variables to restyle the entire page
+    ================================================================ */
+    :root {
+      --c-bg:          #F7F6F2; /* Warm White */
+      --c-surface:     #FFFFFF;
+      --c-primary:     #2C2F1E; /* Olive Dab */
+      --c-accent:      #9AA89A; /* Matte Sage */
+      --c-accent-dk:   #7A9278; /* Sage dark (hover) */
+      --c-text:        #4A4A45; /* Charcoal */
+      --c-muted:       #7A7975;
+      --c-border:      #E2E0DA;
+      --c-alert:       #B83232; /* Class I recall red */
+
+      --font-serif:    'DM Serif Display', Georgia, 'Times New Roman', serif;
+      --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --radius:        8px;
+      --radius-lg:     14px;
+      --shadow-sm:     0 1px 6px rgba(44,47,30,0.07);
+      --shadow:        0 3px 18px rgba(44,47,30,0.09);
+      --shadow-lg:     0 8px 36px rgba(44,47,30,0.13);
+      --trans:         0.22s cubic-bezier(0.4,0,0.2,1);
+      --max-w:         1100px;
+    }
+
+    /* ================================================================
+       RESET
+    ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    :focus-visible {
+      outline: 2px solid var(--c-accent-dk);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ================================================================
+       NAVIGATION
+    ================================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--c-primary);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--c-bg);
+      letter-spacing: 0.01em;
+    }
+    .nav-brand em {
+      color: var(--c-accent);
+      font-style: normal;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(247,246,242,0.65);
+      transition: color var(--trans);
+      padding: 4px 0;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 0; height: 1px;
+      background: var(--c-accent);
+      transition: width var(--trans);
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--c-bg); outline: none; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--c-accent) !important;
+      color: var(--c-primary) !important;
+      padding: 6px 14px !important;
+      border-radius: var(--radius) !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--c-accent-dk) !important; }
+
+    /* ================================================================
+       HERO
+    ================================================================ */
+    .hero {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 76px 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 22px; height: 1px;
+      background: var(--c-accent);
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+      color: var(--c-primary);
+      line-height: 1.05;
+      margin-bottom: 5px;
+    }
+    .hero-role {
+      font-size: 1.05rem;
+      color: var(--c-muted);
+      font-weight: 400;
+      margin-bottom: 26px;
+    }
+    .hero-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.45rem;
+      color: var(--c-primary);
+      line-height: 1.3;
+      margin-bottom: 34px;
+      padding-left: 16px;
+      border-left: 3px solid var(--c-accent);
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 11px 22px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all var(--trans);
+      letter-spacing: 0.01em;
+    }
+    .btn-solid {
+      background: var(--c-primary);
+      color: var(--c-bg);
+    }
+    .btn-solid:hover {
+      background: #3d4228;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(44,47,30,0.22);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--c-primary);
+      border: 1.5px solid var(--c-primary);
+    }
+    .btn-outline:hover {
+      background: var(--c-primary);
+      color: var(--c-bg);
+      transform: translateY(-1px);
+    }
+
+    /* Pipeline SVG animation */
+    @keyframes flowAnim {
+      to { stroke-dashoffset: -20; }
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform: scale(1); }
+      50% { opacity:.75; transform: scale(1.04); }
+    }
+    .flow-path { animation: flowAnim 1.6s linear infinite; }
+    .flow-path.d2 { animation-delay: .55s; }
+    .node-pulse { animation: pulse 3s ease-in-out infinite; }
+    .node-pulse.d1 { animation-delay: 1s; }
+    .node-pulse.d2 { animation-delay: 2s; }
+
+    /* ================================================================
+       STATS BAR
+    ================================================================ */
+    .stats {
+      background: var(--c-primary);
+      padding: 28px 24px;
+    }
+    .stats-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 0;
+      align-items: center;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      color: var(--c-accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-lbl {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: rgba(247,246,242,0.55);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .stat-div {
+      width: 1px;
+      height: 40px;
+      background: rgba(154,168,154,0.2);
+      margin: 0 16px;
+    }
+
+    /* ================================================================
+       SHARED SECTION
+    ================================================================ */
+    .section { padding: 76px 24px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .sec-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sec-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 22px; height: 1px;
+      background: var(--c-accent);
+    }
+    .sec-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--c-primary);
+      line-height: 1.15;
+    }
+    .sec-sub {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--c-muted);
+      max-width: 540px;
+    }
+    .sec-hdr { margin-bottom: 48px; }
+
+    /* ================================================================
+       PROJECT CARDS
+    ================================================================ */
+    .projects-list { display: flex; flex-direction: column; gap: 28px; }
+    .p-card {
+      background: var(--c-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      border-left: 5px solid var(--c-accent);
+      transition: box-shadow var(--trans);
+    }
+    .p-card:hover { box-shadow: var(--shadow-lg); }
+
+    /* Info panel */
+    .p-info {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+    .p-num {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+      margin-bottom: 10px;
+    }
+    .p-name {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      color: var(--c-primary);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .p-desc {
+      font-size: 0.9rem;
+      color: var(--c-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .p-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: auto;
+      padding-bottom: 24px;
+    }
+    .skill-tag {
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-size: 0.71rem;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      border: 1px solid var(--c-border);
+    }
+    .p-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--c-primary);
+      border-bottom: 1.5px solid var(--c-accent);
+      padding-bottom: 1px;
+      width: fit-content;
+      transition: color var(--trans), border-color var(--trans);
+    }
+    .p-link:hover { color: var(--c-accent-dk); border-color: var(--c-accent-dk); }
+
+    /* ================================================================
+       CAROUSEL
+    ================================================================ */
+    .car-wrap {
+      position: relative;
+      background: var(--c-bg);
+      overflow: hidden;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    /* noscript: first slide always visible in static HTML */
+    .car-track {
+      display: flex;
+      flex: 1;
+      /* JS sets transform */
+    }
+    .car-slide {
+      min-width: 100%;
+      padding: 38px 30px 68px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      /* Transition set by JS after load to avoid flash */
+    }
+    .s-lbl {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+    }
+    .s-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--c-primary);
+      line-height: 1.2;
+    }
+    .s-text {
+      font-size: 0.855rem;
+      color: var(--c-muted);
+      line-height: 1.65;
+    }
+    .s-visual { margin-top: 14px; flex: 1; }
+
+    /* Metric grid */
+    .m-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .m-card {
+      background: var(--c-surface);
+      border-radius: var(--radius);
+      padding: 12px 8px;
+      text-align: center;
+      border: 1px solid var(--c-border);
+    }
+    .m-val {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--c-primary);
+      display: block;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .m-lbl {
+      font-size: 0.67rem;
+      color: var(--c-muted);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* Pipeline steps */
+    .pipe-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .pipe-step {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius);
+      padding: 6px 11px;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--c-text);
+    }
+    .pipe-arr { font-size: 0.75rem; color: var(--c-accent); }
+
+    /* Alert tiers */
+    .alert-list { display: flex; flex-direction: column; gap: 7px; }
+    .alert-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      font-size: 0.78rem;
+    }
+    .a-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .a-dot.imm { background: var(--c-alert); }
+    .a-dot.dig { background: var(--c-accent); }
+    .a-type { font-weight: 600; color: var(--c-primary); min-width: 80px; }
+    .a-desc { color: var(--c-muted); }
+
+    /* Checklist animation */
+    .chk-list { display: flex; flex-direction: column; gap: 9px; }
+    .chk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.835rem;
+      color: var(--c-text);
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+    .chk-item.show {
+      animation: slideIn 0.3s ease forwards;
+    }
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .chk-icon {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-primary);
+      font-size: 0.65rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Carousel controls */
+    .car-ctrl {
+      position: absolute;
+      bottom: 14px; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .car-btn {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--c-accent);
+      background: transparent;
+      color: var(--c-primary);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      transition: all var(--trans);
+    }
+    .car-btn:hover, .car-btn:focus-visible {
+      background: var(--c-primary);
+      color: var(--c-bg);
+      border-color: var(--c-primary);
+      outline: none;
+    }
+    .car-dots { display: flex; gap: 5px; }
+    .car-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      opacity: 0.28;
+      transition: opacity var(--trans), transform var(--trans);
+      cursor: pointer;
+      border: none; padding: 0;
+    }
+    .car-dot[aria-selected="true"] { opacity: 1; transform: scale(1.55); }
+    .car-prog {
+      font-size: 0.68rem;
+      color: var(--c-muted);
+      font-weight: 500;
+    }
+
+    /* ================================================================
+       CONTACT
+    ================================================================ */
+    .contact { background: var(--c-primary); padding: 76px 24px; }
+    .contact-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .ct-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 10px;
+    }
+    .ct-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      color: var(--c-bg);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .ct-desc {
+      font-size: 0.92rem;
+      color: rgba(247,246,242,0.58);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .ct-links { display: flex; flex-direction: column; gap: 10px; }
+    .ct-link {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--c-bg);
+      font-size: 0.88rem;
+      transition: color var(--trans);
+    }
+    .ct-link:hover { color: var(--c-accent); }
+    .ct-icon {
+      width: 34px; height: 34px;
+      background: rgba(154,168,154,0.13);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    /* Contact form */
+    .f-group { margin-bottom: 14px; }
+    .f-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(247,246,242,0.65);
+      margin-bottom: 5px;
+      letter-spacing: 0.03em;
+    }
+    .f-input, .f-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(154,168,154,0.22);
+      border-radius: var(--radius);
+      padding: 10px 13px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--c-bg);
+      transition: border-color var(--trans);
+    }
+    .f-input::placeholder, .f-textarea::placeholder { color: rgba(247,246,242,0.28); }
+    .f-input:focus, .f-textarea:focus { outline: none; border-color: var(--c-accent); }
+    .f-textarea { min-height: 110px; resize: vertical; }
+    .f-note {
+      font-size: 0.72rem;
+      color: rgba(247,246,242,0.3);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    footer {
+      background: #1d2012;
+      padding: 18px 24px;
+    }
+    .foot-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: rgba(247,246,242,0.35);
+    }
+    .foot-brand {
+      font-family: var(--font-serif);
+      color: rgba(247,246,242,0.55);
+    }
+
+    /* ================================================================
+       RESPONSIVE
+    ================================================================ */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding: 48px 24px 40px; }
+      .hero-visual { display: none; }
+      .p-card { grid-template-columns: 1fr; }
+      .car-wrap { min-height: 260px; border-top: 1px solid var(--c-border); }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-div:nth-child(4) { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+      .m-grid { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 580px) {
+      .nav-links { display: none; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-div { display: none; }
+      .p-info { padding: 26px 22px; }
+      .car-slide { padding: 26px 22px 60px; }
+      .m-grid { grid-template-columns: 1fr; }
+      .foot-inner { flex-direction: column; gap: 3px; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+================================================================ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <!-- REPLACE: brand name below -->
+    <span class="nav-brand">Hadida <em>Consulting</em></span>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <!-- REPLACE: LinkedIn URL -->
+      <li>
+        <a href="https://www.linkedin.com/in/jacob-j-hadida-zoreacapital1/"
+           target="_blank" rel="noopener" class="nav-cta">LinkedIn ↗</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section id="home" class="hero" aria-labelledby="hero-h1">
+  <div class="hero-text">
+    <!-- REPLACE: eyebrow line -->
+    <p class="hero-eyebrow">Aventura, FL · Open to Consulting &amp; Full-Time</p>
+    <!-- REPLACE: name -->
+    <h1 class="hero-name" id="hero-h1">Jacob Hadida</h1>
+    <!-- REPLACE: role title -->
+    <p class="hero-role">Business Operations &amp; Automation Consultant</p>
+    <!-- REPLACE: tagline (auto-generated — update to your preference) -->
+    <p class="hero-tagline">Smarter Systems.<br>Measurable Impact.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-solid">View Projects</a>
+      <!-- REPLACE: mailto or calendar link -->
+      <a href="mailto:hadidajconsulting@gmail.com?subject=Demo%20Request"
+         class="btn btn-outline">Schedule a Demo</a>
+    </div>
+  </div>
+
+  <!-- PIPELINE DIAGRAM — signature visual (aria-hidden: decorative) -->
+  <div class="hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg"
+         style="width:100%;max-width:400px;" role="img"
+         aria-label="Automation pipeline: Data Sources to Automate to Deliver">
+      <rect x="6" y="20" width="388" height="228" rx="14"
+            fill="white" stroke="#E2E0DA" stroke-width="1"/>
+      <!-- Label -->
+      <text x="200" y="48" font-family="Georgia,serif" font-style="italic"
+            font-size="10.5" fill="#9AA89A" text-anchor="middle">Daily Intelligence Pipeline</text>
+      <!-- Node 1 -->
+      <circle class="node-pulse" cx="78" cy="142" r="40"
+              fill="#F7F6F2" stroke="#9AA89A" stroke-width="1.5"/>
+      <text x="78" y="138" font-family="Georgia,serif" font-size="11"
+            fill="#2C2F1E" text-anchor="middle">Data</text>
+      <text x="78" y="153" font-family="Georgia,serif" font-size="10"
+            fill="#7A9278" text-anchor="middle">Sources</text>
+      <!-- Flow line 1 -->
+      <path d="M119 142 L166 142" stroke="#9AA89A" stroke-width="1.8"
+            stroke-dasharray="5 3" fill="none" class="flow-path"/>
+      <polygon points="163,137 173,142 163,147" fill="#9AA89A"/>
+      <!-- Node 2 (filled) -->
+      <circle class="node-pulse d1" cx="228" cy="142" r="40" fill="#2C2F1E"/>
+      <text x="228" y="138" font-family="Georgia,serif" font-size="11"
+            fill="#F7F6F2" text-anchor="middle">Auto-</text>
+      <text x="228" y="153" font-family="Georgia,serif" font-size="11"
+            fill="#9AA89A" text-anchor="middle">mate</text>
+      <!-- Flow line 2 -->
+      <path d="M269 142 L316 142" stroke="#9AA89A" stroke-width="1.8"
+            stroke-dasharray="5 3" fill="none" class="flow-path d2"/>
+      <polygon points="313,137 323,142 313,147" fill="#9AA89A"/>
+      <!-- Node 3 -->
+      <circle class="node-pulse d2" cx="352" cy="142" r="34"
+              fill="#F7F6F2" stroke="#9AA89A" stroke-width="1.5"/>
+      <text x="352" y="138" font-family="Georgia,serif" font-size="11"
+            fill="#2C2F1E" text-anchor="middle">De-</text>
+      <text x="352" y="153" font-family="Georgia,serif" font-size="10"
+            fill="#7A9278" text-anchor="middle">liver</text>
+      <!-- Divider + stats -->
+      <line x1="26" y1="202" x2="374" y2="202" stroke="#E2E0DA" stroke-width="1"/>
+      <text x="78" y="222" font-size="8.5" fill="#9AA89A" text-anchor="middle">26+ Entities</text>
+      <text x="200" y="222" font-size="8.5" fill="#9AA89A" text-anchor="middle">Daily · 7 AM</text>
+      <text x="340" y="222" font-size="8.5" fill="#9AA89A" text-anchor="middle">99%+ Uptime</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ================================================================
+     STATS BAR
+================================================================ -->
+<div class="stats" aria-label="Key metrics">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-val">26+</span>
+      <span class="stat-lbl">Entities Monitored Daily</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-val">75–90%</span>
+      <span class="stat-lbl">Manual Time Reduced</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-val">99%+</span>
+      <span class="stat-lbl">Pipeline Uptime</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-val">4</span>
+      <span class="stat-lbl">Production-Ready Projects</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     PROJECTS SECTION — populated by JS
+================================================================ -->
+<section id="projects" class="section" aria-labelledby="projects-h2">
+  <div class="section-inner">
+    <header class="sec-hdr">
+      <p class="sec-eyebrow">Portfolio</p>
+      <h2 class="sec-title" id="projects-h2">Automation Projects</h2>
+      <p class="sec-sub">
+        Each project is anchored to verified operational data — no assumed pain points,
+        no invented metrics.
+      </p>
+    </header>
+    <div class="projects-list" id="projects-list" role="list"></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CONTACT
+================================================================ -->
+<section id="contact" class="contact" aria-labelledby="contact-h2">
+  <div class="contact-inner">
+
+    <div class="ct-info">
+      <p class="ct-eyebrow">Get in Touch</p>
+      <h2 class="ct-title" id="contact-h2">
+        Let's talk about what automation can do for your operations.
+      </h2>
+      <p class="ct-desc">
+        Available for consulting engagements and full-time supply chain roles in the
+        Miami-Dade area. Happy to schedule a 20-minute demo of any project.
+      </p>
+      <div class="ct-links">
+        <!-- REPLACE: email -->
+        <a href="mailto:hadidajconsulting@gmail.com" class="ct-link">
+          <span class="ct-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="#9AA89A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </span>
+          hadidajconsulting@gmail.com
+        </a>
+        <!-- REPLACE: LinkedIn URL -->
+        <a href="https://www.linkedin.com/in/jacob-j-hadida-zoreacapital1/"
+           target="_blank" rel="noopener" class="ct-link">
+          <span class="ct-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="#9AA89A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect width="4" height="12" x="2" y="9"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </span>
+          linkedin.com/in/jacob-j-hadida-zoreacapital1
+        </a>
+        <!-- REPLACE: phone -->
+        <a href="tel:2152606210" class="ct-link">
+          <span class="ct-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="#9AA89A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          (215) 260-6210
+        </a>
+      </div>
+    </div>
+
+    <div class="ct-form">
+      <!--
+        FORM INTEGRATION:
+        Option 1 — Formspree (easiest): add action="https://formspree.io/f/YOUR_ID" method="POST"
+        Option 2 — Netlify: add netlify attribute and method="POST"
+        Option 3 — EmailJS: add onsubmit="sendEmail(event)" + EmailJS SDK
+        Current fallback: submit opens the user's email client
+      -->
+      <form id="contact-form" novalidate>
+        <div class="f-group">
+          <label class="f-label" for="f-name">Name</label>
+          <input class="f-input" type="text" id="f-name" name="name"
+                 placeholder="Your name" required autocomplete="name">
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="f-email">Email</label>
+          <input class="f-input" type="email" id="f-email" name="email"
+                 placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="f-msg">Message</label>
+          <textarea class="f-textarea" id="f-msg" name="message"
+                    placeholder="What would you like to discuss or demo?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline"
+                style="width:100%;justify-content:center;color:#F7F6F2;border-color:rgba(154,168,154,0.5);">
+          Send Message
+        </button>
+        <p class="f-note">
+          * This currently opens your email client as a fallback.
+          See the code comment above to connect a form service.
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer>
+  <div class="foot-inner">
+    <!-- REPLACE: brand name and year -->
+    <span class="foot-brand">Hadida Consulting LLC</span>
+    <span>© 2026 Jacob Hadida · Aventura, FL</span>
+  </div>
+</footer>
+
+<!-- ================================================================
+     JAVASCRIPT
+     Project data + carousel engine
+================================================================ -->
+<script>
+/* ----------------------------------------------------------------
+   PROJECT DATA
+   Edit this array to update all three project cards.
+   Each project: id, number, name, desc, skills[], linkHref, slides[]
+   Each slide: label, title, text, type, data (type-specific)
+---------------------------------------------------------------- */
+var PROJECTS = [
+  {
+    id: 'p-pipeline',
+    number: '01',
+    name: 'AI Intelligence Pipeline',
+    desc: 'Production-grade daily monitoring system for a multi-entity portfolio — fully automated from data ingestion to stakeholder delivery with zero manual intervention.',
+    skills: ['n8n', 'LLM Classification', 'Perplexity API', 'Google Sheets', 'HTML Email Delivery', 'Audit Logging'],
+    linkText: 'Request Demo \u2192',
+    // REPLACE: link to Loom video, live demo, or leave as mailto
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20AI%20Pipeline',
+    slides: [
+      {
+        label: 'Challenge',
+        title: 'Manual Monitoring Doesn\u2019t Scale',
+        text: 'Tracking 26+ entities daily across global data sources required 45\u201360 min/day of fragmented manual research \u2014 no consistent format, no audit trail, no guarantee of full coverage.',
+        type: 'pipe-before'
+      },
+      {
+        label: 'Solution',
+        title: 'End-to-End Automated Pipeline',
+        text: 'A scheduled n8n workflow aggregates news via AI-powered APIs, classifies each article by entity and relevance, deduplicates results, and delivers a formatted HTML brief every morning by 7 AM.',
+        type: 'pipe-steps',
+        data: ['Scheduled Trigger', 'AI Aggregation', 'LLM Classify', 'Dedup', 'HTML Deliver', 'Audit Log']
+      },
+      {
+        label: 'Impact',
+        title: 'Zero Manual Hours. Full Audit Trail.',
+        text: 'Self-hosted architecture keeps all data within client infrastructure. Classification accuracy 88\u201394%. Delivery reliability 99%+.',
+        type: 'metrics',
+        data: [
+          { val: '26+', lbl: 'Entities Daily' },
+          { val: '99%+', lbl: 'Uptime' },
+          { val: '0', lbl: 'Manual Hours' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'p-fda',
+    number: '02',
+    name: 'FDA Category Intelligence Monitor',
+    desc: 'Daily automated surveillance of openFDA and MAUDE databases for medical device supply chain teams \u2014 tiered alerts for Class I recalls and a morning digest for all other category intelligence.',
+    skills: ['openFDA API', 'MAUDE Database', 'n8n', 'LLM Triage', 'Regulatory Intelligence', '510(k) Monitoring'],
+    linkText: 'Request Demo \u2192',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20FDA%20Monitor',
+    slides: [
+      {
+        label: 'Challenge',
+        title: 'Reactive Regulatory Awareness',
+        text: 'Medical device supply chain teams had no systematic channel to detect new FDA 510(k) clearances, MAUDE adverse events, or enforcement actions before they impacted operations.',
+        type: 'metrics',
+        data: [
+          { val: 'Days', lbl: 'Typical detection lag' },
+          { val: '0', lbl: 'Systematic monitoring in place' },
+          { val: 'High', lbl: 'Response cost when late' }
+        ]
+      },
+      {
+        label: 'Solution',
+        title: 'Tiered FDA Surveillance',
+        text: 'openFDA and MAUDE queried daily against a product-code watchlist. Class I recalls trigger an immediate alert. All other intelligence consolidates into a structured morning digest.',
+        type: 'alerts',
+        data: [
+          { cls: 'imm', type: 'Class I Recall', desc: 'Immediate alert \u2014 delivery within 10 min of detection' },
+          { cls: 'dig', type: 'New 510(k) Cleared', desc: 'Included in 7 AM morning intelligence brief' },
+          { cls: 'dig', type: 'MAUDE Adverse Event', desc: 'Included in 7 AM morning intelligence brief' },
+          { cls: 'dig', type: 'Guidance Update', desc: 'Included in 7 AM morning intelligence brief' }
+        ]
+      },
+      {
+        label: 'Results',
+        title: '100% Historical Detection. <10 Min Runtime.',
+        text: 'Backtest confirmed detection of all category events in the 2025\u20132026 window. Includes competitor 510(k) tracking and regulatory guidance monitoring.',
+        type: 'metrics',
+        data: [
+          { val: '100%', lbl: 'Historical Event Detection' },
+          { val: '<10 min', lbl: 'Pipeline Runtime' },
+          { val: '90\u201395%', lbl: 'Time Saved' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'p-cafta',
+    number: '03',
+    name: 'CAFTA-DR Compliance Automation',
+    desc: 'Pre-shipment trade compliance automation for the El Salvador \u2192 Miami import lane \u2014 Certificate of Origin validation, SRS authorization tracking, and duty-free status preservation at 10+ shipments/month.',
+    skills: ['CAFTA-DR', 'n8n', 'Google Sheets', 'Trade Compliance', 'SRS Authorization', 'CBP Documentation'],
+    linkText: 'Request Demo \u2192',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20CAFTA-DR',
+    slides: [
+      {
+        label: 'Challenge',
+        title: 'Hidden Compliance Risk Every Shipment',
+        text: 'CAFTA-DR preferential criteria errors are a documented CBP denial reason. El Salvador\u2019s SRS introduced new export authorization requirements in 2024. At 10+ shipments/month, one error puts the entire import lane at risk.',
+        type: 'metrics',
+        data: [
+          { val: '10+', lbl: 'Shipments / Month' },
+          { val: '2024', lbl: 'SRS Requirements Added' },
+          { val: '~$4K+', lbl: 'Annual MPF Exposure' }
+        ]
+      },
+      {
+        label: 'Solution',
+        title: 'Automated Pre-Shipment Compliance',
+        text: 'Each new shipment triggers a four-point compliance check before the customs broker files the entry: CoO criteria validation, SRS authorization status, HS code mapping, and timestamped human sign-off.',
+        type: 'checklist',
+        data: [
+          'CAFTA-DR preferential criteria code validated by HS chapter',
+          'SRS export authorization checked \u2014 30-day advance alert if expiring',
+          'HS classification cross-referenced against product code mapping',
+          'Timestamped human sign-off logged for CBP 5-year retention'
+        ]
+      },
+      {
+        label: 'Impact',
+        title: '$4,100+/yr Preserved. Zero Errors.',
+        text: 'MPF exemption maintained across all entries. 78\u201385% reduction in document preparation time. CBP-compliant 5-year retention records auto-generated per shipment.',
+        type: 'metrics',
+        data: [
+          { val: '$4,100+', lbl: 'MPF Preserved / Year' },
+          { val: '78\u201385%', lbl: 'Prep Time Reduced' },
+          { val: '0', lbl: 'CoO Errors After Validation' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'p-land',
+    number: '04',
+    name: 'Land Acquisition Intelligence Pipeline',
+    desc: 'Multi-agent AI system that automates rural land prospecting from raw county data to mail-ready acquisition targets \u2014 built on Relevance AI with live Regrid Parcel API integration, zero-tolerance exclusion rules, and full no-code client ownership.',
+    skills: ['Relevance AI', 'Multi-Agent Workflow', 'Regrid Parcel API', 'Knowledge Engineering', 'SOP Automation', 'No-Code Architecture', 'Google Sheets'],
+    linkText: 'Request Demo \u2192',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20Land%20Acquisition%20Pipeline',
+    slides: [
+      {
+        label: 'Challenge',
+        title: 'Days of Manual Research Per County',
+        text: 'A rural land investment firm\u2019s prospecting process consumed days of analyst time per county \u2014 clicking through mapping software parcel by parcel, cross-checking ownership and zoning, and hand-cleaning spreadsheets. Quality varied person to person and the process didn\u2019t scale.',
+        type: 'metrics',
+        data: [
+          { val: 'Days', lbl: 'Manual work per county' },
+          { val: '1,000s', lbl: 'Parcels to filter per run' },
+          { val: 'Variable', lbl: 'Output quality person-to-person' }
+        ]
+      },
+      {
+        label: 'Solution',
+        title: 'Four-Agent Sequenced Pipeline',
+        text: 'A Relevance AI multi-agent Workforce: County Scout ranks target counties \u2192 Parcel Research Engine pulls live data via the Regrid API with automatic pagination \u2192 Zoning Validator cross-checks suitability against authoritative sources \u2192 Sheet Manager applies zero-tolerance exclusion rules, deduplicates by owner and address, and assembles mail-ready batches of 200\u2013300 qualified contacts.',
+        type: 'pipe-steps',
+        data: ['County Scout', 'Parcel Engine', 'Zoning Validator', 'Sheet Manager']
+      },
+      {
+        label: 'Status & Impact',
+        title: 'Research Phase Operational. No-Code.',
+        text: 'Hard exclusion rules \u2014 government, federal, cemetery, and institutional ownership \u2014 enforced with zero tolerance. Every excluded parcel logged with a traceable reason. Client runs and maintains the full pipeline without engineering support.',
+        type: 'metrics',
+        data: [
+          { val: '200\u2013300', lbl: 'Qualified owners per mailing batch' },
+          { val: '0', lbl: 'Exclusion rule leakage' },
+          { val: 'No-code', lbl: 'Client-owned, no dev dependency' }
+        ]
+      }
+    ]
+  }
+];
+
+/* ----------------------------------------------------------------
+   RENDER VISUAL for each slide type
+---------------------------------------------------------------- */
+function renderVisual(slide) {
+  var t = slide.type, d = slide.data;
+  if (!d) return '';
+
+  if (t === 'metrics') {
+    return '<div class="s-visual"><div class="m-grid">' +
+      d.map(function(m) {
+        return '<div class="m-card"><span class="m-val">' + m.val + '</span>' +
+               '<span class="m-lbl">' + m.lbl + '</span></div>';
+      }).join('') + '</div></div>';
+  }
+
+  if (t === 'pipe-steps') {
+    var steps = d.map(function(s, i) {
+      return '<span class="pipe-step">' + s + '</span>' +
+             (i < d.length - 1 ? '<span class="pipe-arr" aria-hidden="true">\u2192</span>' : '');
+    }).join('');
+    return '<div class="s-visual"><div class="pipe-row">' + steps + '</div></div>';
+  }
+
+  if (t === 'pipe-before') {
+    return '<div class="s-visual"><div class="pipe-row">' +
+      '<span class="pipe-step">Source 1</span>' +
+      '<span class="pipe-arr" aria-hidden="true">+</span>' +
+      '<span class="pipe-step">Source 2\u2026N</span>' +
+      '<span class="pipe-arr" aria-hidden="true">\u2192</span>' +
+      '<span class="pipe-step" style="border-color:#B83232;color:#B83232;">' +
+        'Manual Review<br><small style="font-weight:400;font-size:.67rem;">45\u201360 min/day</small>' +
+      '</span></div></div>';
+  }
+
+  if (t === 'alerts') {
+    var rows = d.map(function(a) {
+      return '<div class="alert-row">' +
+        '<span class="a-dot ' + a.cls + '" aria-hidden="true"></span>' +
+        '<span class="a-type">' + a.type + '</span>' +
+        '<span class="a-desc">' + a.desc + '</span>' +
+      '</div>';
+    }).join('');
+    return '<div class="s-visual"><div class="alert-list">' + rows + '</div></div>';
+  }
+
+  if (t === 'checklist') {
+    var items = d.map(function(item, i) {
+      return '<div class="chk-item" style="animation-delay:' + (i * 0.18 + 0.05) + 's">' +
+        '<span class="chk-icon" aria-hidden="true">\u2713</span>' +
+        '<span>' + item + '</span>' +
+      '</div>';
+    }).join('');
+    return '<div class="s-visual"><div class="chk-list" data-chk>' + items + '</div></div>';
+  }
+
+  return '';
+}
+
+/* ----------------------------------------------------------------
+   BUILD ONE PROJECT CARD
+---------------------------------------------------------------- */
+function buildCard(proj) {
+  var slides = proj.slides.map(function(sl, i) {
+    return '<div class="car-slide" role="tabpanel" ' +
+           'aria-label="Slide ' + (i+1) + ': ' + sl.title + '" ' +
+           'id="' + proj.id + '-s' + i + '">' +
+      '<span class="s-lbl">' + sl.label + '</span>' +
+      '<h3 class="s-title">' + sl.title + '</h3>' +
+      '<p class="s-text">' + sl.text + '</p>' +
+      renderVisual(sl) +
+    '</div>';
+  }).join('');
+
+  var dots = proj.slides.map(function(_, i) {
+    return '<button class="car-dot" ' +
+           'aria-label="Slide ' + (i+1) + '" ' +
+           'aria-selected="' + (i===0?'true':'false') + '" ' +
+           'data-i="' + i + '" ' +
+           'tabindex="' + (i===0?'0':'-1') + '"></button>';
+  }).join('');
+
+  var skills = proj.skills.map(function(s) {
+    return '<span class="skill-tag">' + s + '</span>';
+  }).join('');
+
+  return '<article class="p-card" role="listitem" aria-labelledby="' + proj.id + '-name">' +
+    '<div class="p-info">' +
+      '<span class="p-num">' + proj.number + '</span>' +
+      '<h2 class="p-name" id="' + proj.id + '-name">' + proj.name + '</h2>' +
+      '<p class="p-desc">' + proj.desc + '</p>' +
+      '<div class="p-skills">' + skills + '</div>' +
+      '<a href="' + proj.linkHref + '" class="p-link">' + proj.linkText + '</a>' +
+    '</div>' +
+    '<div class="car-wrap" ' +
+         'role="region" ' +
+         'aria-label="' + proj.name + ' slides" ' +
+         'aria-roledescription="carousel" ' +
+         'tabindex="0" ' +
+         'data-car="' + proj.id + '">' +
+      '<div class="car-track" id="' + proj.id + '-track">' + slides + '</div>' +
+      '<div class="car-ctrl" role="group" aria-label="Slide controls">' +
+        '<button class="car-btn" data-dir="-1" aria-label="Previous slide">' +
+          '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>' +
+        '</button>' +
+        '<div class="car-dots" role="tablist">' + dots + '</div>' +
+        '<button class="car-btn" data-dir="1" aria-label="Next slide">' +
+          '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>' +
+        '</button>' +
+        '<span class="car-prog" aria-live="polite" id="' + proj.id + '-prog">1 / ' + proj.slides.length + '</span>' +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+/* ----------------------------------------------------------------
+   CAROUSEL ENGINE
+---------------------------------------------------------------- */
+function initCarousel(wrap, total, pid) {
+  var cur = 0;
+  var track = wrap.querySelector('.car-track');
+  var dots  = wrap.querySelectorAll('.car-dot');
+  var prog  = document.getElementById(pid + '-prog');
+
+  // Enable smooth transition after first paint (prevents flash on load)
+  setTimeout(function() {
+    track.style.transition = 'transform 0.38s cubic-bezier(0.4,0,0.2,1)';
+  }, 80);
+
+  function goTo(idx) {
+    cur = ((idx % total) + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+
+    dots.forEach(function(d, i) {
+      var active = i === cur;
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+      d.tabIndex = active ? 0 : -1;
+    });
+
+    if (prog) prog.textContent = (cur + 1) + ' / ' + total;
+
+    // Trigger checklist animations
+    var slideEl = wrap.querySelectorAll('.car-slide')[cur];
+    var chk = slideEl && slideEl.querySelector('[data-chk]');
+    if (chk) {
+      chk.querySelectorAll('.chk-item').forEach(function(item, i) {
+        setTimeout(function() { item.classList.add('show'); }, i * 200);
+      });
+    }
+  }
+
+  // Button clicks
+  wrap.querySelectorAll('.car-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      goTo(cur + parseInt(btn.dataset.dir, 10));
+    });
+  });
+
+  // Dot clicks
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() { goTo(i); });
+  });
+
+  // Keyboard
+  wrap.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(cur - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(cur + 1); }
+  });
+
+  // Touch swipe
+  var tx = 0;
+  wrap.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend',   function(e) {
+    var diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 46) goTo(cur + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+
+  goTo(0);
+}
+
+/* ----------------------------------------------------------------
+   INIT
+---------------------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+  // Render project cards
+  var list = document.getElementById('projects-list');
+  if (list) {
+    list.innerHTML = PROJECTS.map(buildCard).join('');
+    PROJECTS.forEach(function(p) {
+      var wrap = document.querySelector('[data-car="' + p.id + '"]');
+      if (wrap) initCarousel(wrap, p.slides.length, p.id);
+    });
+  }
+
+  // Contact form fallback (opens email client)
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('f-name').value || '';
+      var email = document.getElementById('f-email').value || '';
+      var msg  = document.getElementById('f-msg').value || '';
+      // REPLACE: your email address below
+      window.location.href = 'mailto:hadidajconsulting@gmail.com' +
+        '?subject=' + encodeURIComponent('Portfolio Inquiry from ' + name) +
+        '&body=' + encodeURIComponent(msg + '\n\nReply to: ' + email);
+    });
+  }
+});
+</script>
+
+</body>
+</html>

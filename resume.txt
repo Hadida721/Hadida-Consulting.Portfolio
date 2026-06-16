@@ -1,0 +1,128 @@
+JACOB HADIDA
+Business Operations & Automation Consultant
+Aventura, FL  |  (215) 260-6210  |  hadidajconsulting@gmail.com
+linkedin.com/in/jacob-j-hadida-zoreacapital1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROFESSIONAL SUMMARY
+
+Results-driven operations consultant specializing in AI-powered workflow automation,
+supply chain compliance intelligence, and CRM data management. Proven track record
+deploying production-grade automation pipelines that reduce manual operational overhead
+by 75-90% and accelerate decision-making for financial services and healthcare-adjacent
+supply chain clients.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CORE COMPETENCIES
+
+Workflow Automation (n8n)          |  AI/LLM Integration & Orchestration
+Supply Chain Compliance            |  CAFTA-DR Trade Compliance
+FDA Regulatory Intelligence        |  Import Operations & Documentation
+CRM (Ellucian CRM Advance, MS Dynamics) |  SQL & Data Analysis
+Tableau Data Visualization         |  Process Optimization & Reporting
+Google Sheets & Audit Logging      |  Investor Relations Operations
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROFESSIONAL EXPERIENCE
+
+HADIDA CONSULTING LLC  |  Founder & Principal Consultant
+May 2024 - Present  |  Miami-Fort Lauderdale Area, FL  |  Contract/Remote
+
+• Architect and deploy end-to-end AI automation pipelines that eliminate manual
+  monitoring workflows, reducing operational overhead by an estimated 75-90% per
+  workflow deployed across supply chain and compliance functions
+• Design CRM data structures, automated reporting systems, and regulatory intelligence
+  tools improving data quality and decision velocity for regulated-industry clients
+• Developed CAFTA-DR trade compliance automation for a medical device import operation
+  (El Salvador to Miami lane): SRS authorization tracking, Certificate of Origin
+  validation, and pre-shipment compliance checklists preserving duty-free and MPF-
+  exempt treatment across 10+ monthly shipments
+• Built FDA category intelligence system monitoring openFDA, MAUDE, and 510(k)
+  clearance databases for medical device supply chain clients; automated daily briefs
+  delivered with <10 min end-to-end pipeline runtime
+
+ZOREA CAPITAL LP  |  Business Operations Consultant / Investor Relations
+Jul 2024 - Present  |  Miami-Fort Lauderdale Area, FL  |  Contract/Remote
+
+• Built and operate a production AI intelligence pipeline monitoring 26 portfolio
+  companies daily across global exchanges; automated HTML reports delivered by 7 AM
+  with full Google Sheets audit logging, replacing an estimated 45-60 min/day of manual
+  monitoring across multiple data sources
+• Streamlined investor relations CRM workflows and reporting infrastructure for a
+  boutique value-investing fund managing separately managed accounts for HNW clients
+• Promoted to Investor Relations role (Apr 2026); apply Series 65-credentialed expertise
+  to client communications, portfolio reporting, and operational support
+
+BARRY UNIVERSITY  |  Data Analyst
+Aug 2022 - Jun 2024  |  Miami-Dade County, FL  |  Full-Time
+
+• Managed and optimized relational database infrastructure (Ellucian CRM Advance)
+  supporting a 1,034+ record Presidential contacts consolidation and fundraising analytics
+  program serving executive-level stakeholders
+• Designed automated data workflows for import, validation, and update operations,
+  reducing manual processing time and improving data integrity across donor records
+• Produced time-sensitive fundraising and donor engagement reports for internal and
+  external stakeholders, maintaining strict protocols over comprehensive confidential data
+• Led event participant import management through Team Dynamix across high-volume
+  annual data cycles
+
+SELF-EMPLOYED  |  Cryptocurrency Systems Engineer
+May 2021 - Aug 2022  |  Miami, FL  |  Freelance
+
+• Designed, built, and optimized cryptocurrency mining and farming systems for
+  international clients; managed hardware procurement, deployment logistics, and remote
+  operations across multiple installations
+• Improved system performance through iterative hardware and software optimization
+  in high-availability computing environments
+
+LLUVIA RECORDS  |  Event & Artist Operations Manager
+Jan 2017 - Aug 2022  |  Miami, FL  |  Full-Time
+
+• Coordinated logistics and operations for large-scale music festivals and live events
+  with attendance exceeding 500 people; managed vendor contracts, production timelines,
+  staffing, and on-site execution
+• Oversaw full-cycle budgeting, bookkeeping, and financial audits across company
+  operations, maintaining accuracy across high-volume financial records
+• Managed artist rosters and cross-functional production teams for a high-volume event
+  and recording portfolio
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PORTFOLIO PROJECTS
+
+AI Intelligence Pipeline (Production) — Daily AI-powered monitoring for 26+ entities;
+n8n + LLM classification + Gmail delivery; replaces 45-60 min/day of manual review.
+[ hadida-consulting.github.io/portfolio ]
+
+FDA Category Intelligence Monitor — Automated openFDA + MAUDE surveillance for
+medical device supply chain; daily brief delivered end-to-end in under 10 minutes.
+[ hadida-consulting.github.io/portfolio ]
+
+CAFTA-DR Compliance Automation — Pre-shipment CoO validation + SRS authorization
+tracker for El Salvador import lane; preserves duty-free and MPF-exempt treatment.
+[ hadida-consulting.github.io/portfolio ]
+
+Land Acquisition Intelligence Pipeline — Multi-agent Relevance AI system (Regrid Parcel
+API) automating rural land prospecting from county data to mail-ready batches of 200-300
+qualified owners; zero-tolerance exclusion rules; no-code client-owned operation.
+[ hadida-consulting.github.io/portfolio ]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EDUCATION
+
+Management Information Systems and Services
+Miami Dade College  |  Miami, FL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CERTIFICATIONS
+
+Foundations: Data, Data, Everywhere           Google
+Google AI Essentials (5-course program)       Google
+Fundamentals of Visualization with Tableau    UC Davis
+SQL for Data Science                          UC Davis
+Series 65                                     NASAA  |  Passed April 2026
