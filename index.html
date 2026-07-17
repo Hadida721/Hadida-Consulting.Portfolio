@@ -6,6 +6,9 @@
   <meta name="description" content="Jacob Hadida — Business Operations &amp; Automation Consultant. AI-powered workflows for supply chain and compliance operations.">
   <title>Jacob Hadida | Hadida Consulting LLC</title>
 
+  <!-- Favicon: H solo mark per brand guidelines (Warm White bg, Olive H) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23F7F6F2'/><text x='16' y='25' font-family='Helvetica Neue,Helvetica,Arial,sans-serif' font-weight='700' font-size='26' text-anchor='middle' fill='%232C2F1E'>H</text></svg>">
+
   <!-- Google Fonts: DM Serif Display (display) + Inter (body) -->
   <!-- Remove this link if you want no external dependencies and add fallbacks below -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,15 +93,12 @@
       justify-content: space-between;
     }
     .nav-brand {
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      color: var(--c-bg);
-      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      opacity: 1;
+      transition: opacity var(--trans);
     }
-    .nav-brand em {
-      color: var(--c-accent);
-      font-style: normal;
-    }
+    .nav-brand:hover { opacity: 0.85; }
     .nav-links {
       display: flex;
       gap: 28px;
@@ -222,19 +222,7 @@
       transform: translateY(-1px);
     }
 
-    /* Pipeline SVG animation */
-    @keyframes flowAnim {
-      to { stroke-dashoffset: -20; }
-    }
-    @keyframes pulse {
-      0%,100% { opacity:1; transform: scale(1); }
-      50% { opacity:.75; transform: scale(1.04); }
-    }
-    .flow-path { animation: flowAnim 1.6s linear infinite; }
-    .flow-path.d2 { animation-delay: .55s; }
-    .node-pulse { animation: pulse 3s ease-in-out infinite; }
-    .node-pulse.d1 { animation-delay: 1s; }
-    .node-pulse.d2 { animation-delay: 2s; }
+    /* Pipeline SVG — fully static, no animation */
 
     /* ================================================================
        STATS BAR
@@ -347,6 +335,33 @@
       line-height: 1.15;
       margin-bottom: 12px;
     }
+    .p-badge {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+      background: rgba(154,168,154,0.16);
+      border: 1px solid var(--c-accent);
+      padding: 3px 9px;
+      border-radius: 12px;
+      line-height: 1.4;
+      position: relative;
+      top: -3px;
+    }
+    .s-footnote {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--c-border);
+      font-size: 0.7rem;
+      color: var(--c-muted);
+      line-height: 1.5;
+      font-style: italic;
+    }
     .p-desc {
       font-size: 0.9rem;
       color: var(--c-muted);
@@ -360,14 +375,34 @@
       margin-bottom: auto;
       padding-bottom: 24px;
     }
+    .p-skills-label {
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .p-skills-label::after {
+      content: '';
+      flex: 1;
+      max-width: 24px;
+      height: 1px;
+      background: var(--c-accent);
+      opacity: 0.5;
+    }
     .skill-tag {
       background: var(--c-bg);
       color: var(--c-text);
-      font-size: 0.71rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      padding: 3px 9px;
-      border-radius: 20px;
+      padding: 5px 11px;
+      border-radius: 14px;
       border: 1px solid var(--c-border);
+      line-height: 1.4;
     }
     .p-link {
       display: inline-flex;
@@ -454,6 +489,47 @@
       color: var(--c-muted);
       font-weight: 500;
       line-height: 1.3;
+    }
+
+    /* Label → Value → Caption cards (Slide 3 standard) */
+    .lvc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .lvc-card {
+      background: var(--c-surface);
+      border-radius: var(--radius);
+      padding: 14px 10px 12px;
+      text-align: center;
+      border: 1px solid var(--c-border);
+      border-top: 2px solid var(--c-accent);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .lvc-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-accent-dk);
+      line-height: 1.25;
+      min-height: 1.65em;
+    }
+    .lvc-value {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--c-primary);
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+    .lvc-caption {
+      font-size: 0.65rem;
+      color: var(--c-muted);
+      font-weight: 500;
+      line-height: 1.4;
+      margin-top: 3px;
     }
 
     /* Pipeline steps */
@@ -682,6 +758,7 @@
       .stat-div:nth-child(4) { display: none; }
       .contact-inner { grid-template-columns: 1fr; gap: 36px; }
       .m-grid { grid-template-columns: repeat(3,1fr); }
+      .lvc-grid { grid-template-columns: repeat(3,1fr); }
     }
     @media (max-width: 580px) {
       .nav-links { display: none; }
@@ -690,6 +767,8 @@
       .p-info { padding: 26px 22px; }
       .car-slide { padding: 26px 22px 60px; }
       .m-grid { grid-template-columns: 1fr; }
+      .lvc-grid { grid-template-columns: 1fr; }
+      .lvc-label { min-height: auto; }
       .foot-inner { flex-direction: column; gap: 3px; text-align: center; }
     }
   </style>
@@ -702,8 +781,33 @@
 ================================================================ -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <!-- REPLACE: brand name below -->
-    <span class="nav-brand">Hadida <em>Consulting</em></span>
+    <!-- Brand: inverted compact lockup per Hadida Consulting brand guidelines -->
+    <a href="#home" class="nav-brand" aria-label="Hadida Consulting LLC — Home"
+       style="display:flex;align-items:center;height:38px;text-decoration:none;">
+      <svg viewBox="0 0 240 56" xmlns="http://www.w3.org/2000/svg"
+           style="height:36px;width:auto;" role="img"
+           aria-label="Hadida Consulting LLC">
+        <!-- H mark: two verticals (white) + sage crossbar -->
+        <rect x="0"  y="6"  width="8" height="44" rx="1" fill="#FFFFFF"/>
+        <rect x="22" y="6"  width="8" height="44" rx="1" fill="#FFFFFF"/>
+        <rect x="0"  y="23" width="30" height="6" rx="1" fill="#9AA89A"/>
+        <!-- Charcoal divider rule -->
+        <rect x="40" y="8"  width="2" height="40" rx="1" fill="#9AA89A"/>
+        <!-- Stacked wordmark -->
+        <text x="50" y="22"
+              font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+              font-weight="700" font-size="15" letter-spacing="3.2"
+              fill="#FFFFFF">HADIDA</text>
+        <text x="50" y="37"
+              font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+              font-weight="300" font-size="9" letter-spacing="3"
+              fill="#FFFFFF">CONSULTING</text>
+        <text x="50" y="49"
+              font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+              font-weight="300" font-size="8" letter-spacing="2.5"
+              fill="#9AA89A">LLC</text>
+      </svg>
+    </a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -724,8 +828,6 @@
 ================================================================ -->
 <section id="home" class="hero" aria-labelledby="hero-h1">
   <div class="hero-text">
-    <!-- REPLACE: eyebrow line -->
-    <p class="hero-eyebrow">Aventura, FL · Open to Consulting &amp; Full-Time</p>
     <!-- REPLACE: name -->
     <h1 class="hero-name" id="hero-h1">Jacob Hadida</h1>
     <!-- REPLACE: role title -->
@@ -740,49 +842,46 @@
     </div>
   </div>
 
-  <!-- PIPELINE DIAGRAM — signature visual (aria-hidden: decorative) -->
+  <!-- CONSULTING APPROACH DIAGRAM — signature visual -->
   <div class="hero-visual" aria-hidden="true">
-    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg"
+    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"
          style="width:100%;max-width:400px;" role="img"
-         aria-label="Automation pipeline: Data Sources to Automate to Deliver">
-      <rect x="6" y="20" width="388" height="228" rx="14"
-            fill="white" stroke="#E2E0DA" stroke-width="1"/>
-      <!-- Label -->
-      <text x="200" y="48" font-family="Georgia,serif" font-style="italic"
-            font-size="10.5" fill="#9AA89A" text-anchor="middle">Daily Intelligence Pipeline</text>
-      <!-- Node 1 -->
-      <circle class="node-pulse" cx="78" cy="142" r="40"
+         aria-label="Consulting approach: Identify, Automate, Deliver">
+
+      <!-- Card background — sage green border, clearly visible -->
+      <rect x="4" y="10" width="392" height="180" rx="14"
+            fill="white" stroke="#9AA89A" stroke-width="2.5"/>
+
+      <!-- ── CIRCLE 1: IDENTIFY ── -->
+      <circle cx="70" cy="100" r="42"
               fill="#F7F6F2" stroke="#9AA89A" stroke-width="1.5"/>
-      <text x="78" y="138" font-family="Georgia,serif" font-size="11"
-            fill="#2C2F1E" text-anchor="middle">Data</text>
-      <text x="78" y="153" font-family="Georgia,serif" font-size="10"
-            fill="#7A9278" text-anchor="middle">Sources</text>
-      <!-- Flow line 1 -->
-      <path d="M119 142 L166 142" stroke="#9AA89A" stroke-width="1.8"
-            stroke-dasharray="5 3" fill="none" class="flow-path"/>
-      <polygon points="163,137 173,142 163,147" fill="#9AA89A"/>
-      <!-- Node 2 (filled) -->
-      <circle class="node-pulse d1" cx="228" cy="142" r="40" fill="#2C2F1E"/>
-      <text x="228" y="138" font-family="Georgia,serif" font-size="11"
-            fill="#F7F6F2" text-anchor="middle">Auto-</text>
-      <text x="228" y="153" font-family="Georgia,serif" font-size="11"
-            fill="#9AA89A" text-anchor="middle">mate</text>
-      <!-- Flow line 2 -->
-      <path d="M269 142 L316 142" stroke="#9AA89A" stroke-width="1.8"
-            stroke-dasharray="5 3" fill="none" class="flow-path d2"/>
-      <polygon points="313,137 323,142 313,147" fill="#9AA89A"/>
-      <!-- Node 3 -->
-      <circle class="node-pulse d2" cx="352" cy="142" r="34"
+      <text x="70" y="105"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="13" fill="#2C2F1E" text-anchor="middle">Identify</text>
+
+      <!-- Static arrow 1 -->
+      <line x1="114" y1="100" x2="152" y2="100"
+            stroke="#9AA89A" stroke-width="1.5"/>
+      <polygon points="150,95 160,100 150,105" fill="#9AA89A"/>
+
+      <!-- ── CIRCLE 2: AUTOMATE (filled — hero step) ── -->
+      <circle cx="200" cy="100" r="42" fill="#2C2F1E"/>
+      <text x="200" y="105"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="13" fill="#F7F6F2" text-anchor="middle">Automate</text>
+
+      <!-- Static arrow 2 -->
+      <line x1="244" y1="100" x2="282" y2="100"
+            stroke="#9AA89A" stroke-width="1.5"/>
+      <polygon points="280,95 290,100 280,105" fill="#9AA89A"/>
+
+      <!-- ── CIRCLE 3: DELIVER ── -->
+      <circle cx="330" cy="100" r="42"
               fill="#F7F6F2" stroke="#9AA89A" stroke-width="1.5"/>
-      <text x="352" y="138" font-family="Georgia,serif" font-size="11"
-            fill="#2C2F1E" text-anchor="middle">De-</text>
-      <text x="352" y="153" font-family="Georgia,serif" font-size="10"
-            fill="#7A9278" text-anchor="middle">liver</text>
-      <!-- Divider + stats -->
-      <line x1="26" y1="202" x2="374" y2="202" stroke="#E2E0DA" stroke-width="1"/>
-      <text x="78" y="222" font-size="8.5" fill="#9AA89A" text-anchor="middle">26+ Entities</text>
-      <text x="200" y="222" font-size="8.5" fill="#9AA89A" text-anchor="middle">Daily · 7 AM</text>
-      <text x="340" y="222" font-size="8.5" fill="#9AA89A" text-anchor="middle">99%+ Uptime</text>
+      <text x="330" y="105"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="13" fill="#2C2F1E" text-anchor="middle">Deliver</text>
+
     </svg>
   </div>
 </section>
@@ -793,23 +892,23 @@
 <div class="stats" aria-label="Key metrics">
   <div class="stats-inner">
     <div class="stat-item">
-      <span class="stat-val">26+</span>
-      <span class="stat-lbl">Entities Monitored Daily</span>
-    </div>
-    <div class="stat-div" aria-hidden="true"></div>
-    <div class="stat-item">
-      <span class="stat-val">75–90%</span>
-      <span class="stat-lbl">Manual Time Reduced</span>
-    </div>
-    <div class="stat-div" aria-hidden="true"></div>
-    <div class="stat-item">
-      <span class="stat-val">99%+</span>
-      <span class="stat-lbl">Pipeline Uptime</span>
-    </div>
-    <div class="stat-div" aria-hidden="true"></div>
-    <div class="stat-item">
       <span class="stat-val">4</span>
-      <span class="stat-lbl">Production-Ready Projects</span>
+      <span class="stat-lbl">Automation Projects Built</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-val">3</span>
+      <span class="stat-lbl">Industries Served</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-val">70–90%</span>
+      <span class="stat-lbl">Avg. Manual Time Eliminated</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-val">100%</span>
+      <span class="stat-lbl">Clients Operate Independently</span>
     </div>
   </div>
 </div>
@@ -930,7 +1029,30 @@
 <footer>
   <div class="foot-inner">
     <!-- REPLACE: brand name and year -->
-    <span class="foot-brand">Hadida Consulting LLC</span>
+    <!-- Footer brand: inverted compact lockup -->
+    <span class="foot-brand" aria-label="Hadida Consulting LLC"
+          style="display:inline-flex;align-items:center;">
+      <svg viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg"
+           style="height:30px;width:auto;" role="img"
+           aria-label="Hadida Consulting LLC">
+        <rect x="0"  y="4"  width="7" height="40" rx="1" fill="#F7F6F2"/>
+        <rect x="20" y="4"  width="7" height="40" rx="1" fill="#F7F6F2"/>
+        <rect x="0"  y="20" width="27" height="5" rx="1" fill="#9AA89A"/>
+        <rect x="37" y="6"  width="1.5" height="36" rx="1" fill="#9AA89A"/>
+        <text x="46" y="18"
+              font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+              font-weight="700" font-size="13" letter-spacing="2.8"
+              fill="#F7F6F2">HADIDA</text>
+        <text x="46" y="31"
+              font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+              font-weight="300" font-size="8" letter-spacing="2.6"
+              fill="#F7F6F2">CONSULTING</text>
+        <text x="46" y="42"
+              font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+              font-weight="300" font-size="7" letter-spacing="2.2"
+              fill="#9AA89A">LLC</text>
+      </svg>
+    </span>
     <span>© 2026 Jacob Hadida · Aventura, FL</span>
   </div>
 </footer>
@@ -950,35 +1072,40 @@ var PROJECTS = [
   {
     id: 'p-pipeline',
     number: '01',
-    name: 'AI Intelligence Pipeline',
-    desc: 'Production-grade daily monitoring system for a multi-entity portfolio — fully automated from data ingestion to stakeholder delivery with zero manual intervention.',
-    skills: ['n8n', 'LLM Classification', 'Perplexity API', 'Google Sheets', 'HTML Email Delivery', 'Audit Logging'],
+    name: 'AI-Automated Newsletter Delivery System',
+    desc: 'An automated system that monitors over 26 publicly traded companies every 48 hours, filters out irrelevant or low-quality articles, and delivers a clean morning briefing on a scheduled trigger \u2014 with no manual involvement. Rejected articles are logged separately so the filtering rules can be reviewed and refined over time, making the system more accurate the longer it runs.',
+    skills: [
+      'n8n workflow software (unifies the entire process)',
+      'Connections to external news and AI services (API integrations)',
+      '4+ language models used based on performance and capacity (Claude Sonnet, DeepSeek, Perplexity, OpenAI mini)',
+      'Custom code and data exchange between system components (MCP and JavaScript in JSON)',
+      'Data safety and error log retention for future product optimization'
+    ],
     linkText: 'Request Demo \u2192',
-    // REPLACE: link to Loom video, live demo, or leave as mailto
-    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20AI%20Pipeline',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20Newsletter%20System',
     slides: [
       {
-        label: 'Challenge',
-        title: 'Manual Monitoring Doesn\u2019t Scale',
-        text: 'Tracking 26+ entities daily across global data sources required 45\u201360 min/day of fragmented manual research \u2014 no consistent format, no audit trail, no guarantee of full coverage.',
+        label: 'The Problem',
+        title: 'Hours Lost to Manual Research Every Morning',
+        text: 'Tracking news across more than two dozen companies meant 45\u201360 minutes of clicking through articles every single day \u2014 with no guarantee that important developments were actually caught, and no clean record of what was reviewed.',
         type: 'pipe-before'
       },
       {
-        label: 'Solution',
-        title: 'End-to-End Automated Pipeline',
-        text: 'A scheduled n8n workflow aggregates news via AI-powered APIs, classifies each article by entity and relevance, deduplicates results, and delivers a formatted HTML brief every morning by 7 AM.',
+        label: 'The Solution',
+        title: 'A Morning Briefing That Builds Itself',
+        text: 'Every 48 hours, the system reads the news for every company on the watchlist, decides which articles matter, filters out the rest, and delivers a finished briefing to inbox \u2014 automatically. Rejected articles are logged so the filtering can be reviewed and tightened over time.',
         type: 'pipe-steps',
-        data: ['Scheduled Trigger', 'AI Aggregation', 'LLM Classify', 'Dedup', 'HTML Deliver', 'Audit Log']
+        data: ['Workflow Trigger', 'News Reading', 'AI Filtering', 'Quality Review', 'Email Delivery']
       },
       {
-        label: 'Impact',
-        title: 'Zero Manual Hours. Full Audit Trail.',
-        text: 'Self-hosted architecture keeps all data within client infrastructure. Classification accuracy 88\u201394%. Delivery reliability 99%+.',
-        type: 'metrics',
+        label: 'The Result',
+        title: 'An Hour Reclaimed. Every Day.',
+        text: 'Roughly an hour of manual research is recovered each day. The briefing arrives on time every morning, and the project data logs make the system smarter the longer it runs.',
+        type: 'cards',
         data: [
-          { val: '26+', lbl: 'Entities Daily' },
-          { val: '99%+', lbl: 'Uptime' },
-          { val: '0', lbl: 'Manual Hours' }
+          { label: 'Time Recovered Daily', value: '45\u201360 min/day', caption: 'Manual research time reclaimed' },
+          { label: 'Watchlist Coverage', value: '26+ companies', caption: 'Tracked every 48 hours' },
+          { label: 'System Quality', value: 'Self-improving', caption: 'Data logs refine accuracy over time' }
         ]
       }
     ]
@@ -986,44 +1113,43 @@ var PROJECTS = [
   {
     id: 'p-fda',
     number: '02',
-    name: 'FDA Category Intelligence Monitor',
-    desc: 'Daily automated surveillance of openFDA and MAUDE databases for medical device supply chain teams \u2014 tiered alerts for Class I recalls and a morning digest for all other category intelligence.',
-    skills: ['openFDA API', 'MAUDE Database', 'n8n', 'LLM Triage', 'Regulatory Intelligence', '510(k) Monitoring'],
+    name: 'FDA Regulatory Alert System',
+    desc: 'An automated daily watch on FDA regulatory activity. The system reads public FDA databases every morning, scans for events tied to the client\u2019s product category, and delivers two kinds of notifications: an immediate alert when something urgent appears, and a structured morning digest for everything else worth knowing.',
+    skills: [
+      'Workflow automation software that unifies the entire process (n8n)',
+      'Direct connection to the FDA\u2019s public regulatory database (openFDA API)',
+      'AI-powered article sorting that decides what\u2019s urgent vs. routine (LLM triage)',
+      'Automated email and notification delivery (custom alerting workflow)',
+      'Data safety and error log retention for future product optimization'
+    ],
     linkText: 'Request Demo \u2192',
-    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20FDA%20Monitor',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20FDA%20Alert%20System',
     slides: [
       {
-        label: 'Challenge',
-        title: 'Reactive Regulatory Awareness',
-        text: 'Medical device supply chain teams had no systematic channel to detect new FDA 510(k) clearances, MAUDE adverse events, or enforcement actions before they impacted operations.',
-        type: 'metrics',
-        data: [
-          { val: 'Days', lbl: 'Typical detection lag' },
-          { val: '0', lbl: 'Systematic monitoring in place' },
-          { val: 'High', lbl: 'Response cost when late' }
-        ]
+        label: 'The Problem',
+        title: 'No Early Warning for What\u2019s Coming',
+        text: 'Product compliance teams at FDA-regulated companies have no systematic way to catch new FDA clearances, safety events, or guidance updates affecting their product category.',
+        type: 'none'
       },
       {
-        label: 'Solution',
-        title: 'Tiered FDA Surveillance',
-        text: 'openFDA and MAUDE queried daily against a product-code watchlist. Class I recalls trigger an immediate alert. All other intelligence consolidates into a structured morning digest.',
+        label: 'The Solution',
+        title: 'Automated FDA Watch',
+        text: 'Every morning, the FDA\u2019s public database is extracted and cross-referenced against a watchlist of the client\u2019s products. Anything urgent triggers an immediate alert within minutes. Everything else \u2014 new clearances, safety patterns, regulatory guidance \u2014 is consolidated into a structured morning brief delivered at the client\u2019s preferred time of day.',
         type: 'alerts',
         data: [
-          { cls: 'imm', type: 'Class I Recall', desc: 'Immediate alert \u2014 delivery within 10 min of detection' },
-          { cls: 'dig', type: 'New 510(k) Cleared', desc: 'Included in 7 AM morning intelligence brief' },
-          { cls: 'dig', type: 'MAUDE Adverse Event', desc: 'Included in 7 AM morning intelligence brief' },
-          { cls: 'dig', type: 'Guidance Update', desc: 'Included in 7 AM morning intelligence brief' }
+          { cls: 'imm', type: 'Critical Safety Event', desc: 'Immediate alert, delivered within 10 minutes' },
+          { cls: 'dig', type: 'New Clearances, Safety Patterns & Guidance Updates', desc: 'Batched into the morning brief' }
         ]
       },
       {
-        label: 'Results',
-        title: '100% Historical Detection. <10 Min Runtime.',
-        text: 'Backtest confirmed detection of all category events in the 2025\u20132026 window. Includes competitor 510(k) tracking and regulatory guidance monitoring.',
-        type: 'metrics',
+        label: 'The Result',
+        title: 'Automated FDA Alert on Client Products',
+        text: 'Past regulatory updates had been overlooked, causing operations and logistics delays. The automated watch now puts every FDA event affecting client products on the team\u2019s desk the same day it\u2019s published \u2014 eliminating the discovery lag that previously created the disruption.',
+        type: 'cards',
         data: [
-          { val: '100%', lbl: 'Historical Event Detection' },
-          { val: '<10 min', lbl: 'Pipeline Runtime' },
-          { val: '90\u201395%', lbl: 'Time Saved' }
+          { label: 'New Detection', value: 'Same day', caption: 'Surfaced as soon as FDA publishes' },
+          { label: 'Urgent Alerts', value: 'Within 10 min', caption: 'From event detection to alert delivery' },
+          { label: 'Reduction in Manual Work', value: '~90%', caption: 'Fewer hours spent on FDA monitoring' }
         ]
       }
     ]
@@ -1031,44 +1157,48 @@ var PROJECTS = [
   {
     id: 'p-cafta',
     number: '03',
-    name: 'CAFTA-DR Compliance Automation',
-    desc: 'Pre-shipment trade compliance automation for the El Salvador \u2192 Miami import lane \u2014 Certificate of Origin validation, SRS authorization tracking, and duty-free status preservation at 10+ shipments/month.',
-    skills: ['CAFTA-DR', 'n8n', 'Google Sheets', 'Trade Compliance', 'SRS Authorization', 'CBP Documentation'],
+    name: 'Import Documentation Automation',
+    badge: 'Case Study \u00b7 In Beta',
+    desc: 'Automated system that reviews import shipment documentation before it reaches customs. Each new shipment triggers an automatic review against the importer\u2019s compliance rules, flags missing or expiring documents in advance, and routes a clean record to the team for sign-off \u2014 preventing documentation errors that delay clearance.',
+    skills: [
+      'Workflow automation software that unifies the entire process (n8n)',
+      'Database and error logs for audit-ready records (Google Sheets / Excel)',
+      'Document parsing and field extraction for compliance review (LLM document review)',
+      'Authorization expiry tracking with advance renewal alerts (authorization tracking)',
+      'Customs-compliant approval record generation (customs documentation)',
+      'Data safety and error log retention for future product optimization'
+    ],
     linkText: 'Request Demo \u2192',
-    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20CAFTA-DR',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20Import%20Documentation',
     slides: [
       {
-        label: 'Challenge',
-        title: 'Hidden Compliance Risk Every Shipment',
-        text: 'CAFTA-DR preferential criteria errors are a documented CBP denial reason. El Salvador\u2019s SRS introduced new export authorization requirements in 2024. At 10+ shipments/month, one error puts the entire import lane at risk.',
-        type: 'metrics',
-        data: [
-          { val: '10+', lbl: 'Shipments / Month' },
-          { val: '2024', lbl: 'SRS Requirements Added' },
-          { val: '~$4K+', lbl: 'Annual MPF Exposure' }
-        ]
+        label: 'The Problem',
+        title: 'Documentation Errors Are Costly and Easy to Miss',
+        text: 'Importers operating under preferential trade programs only keep their duty-free status when documentation is precise. Compliance requirements evolve year over year, and manual document review leaves room for small errors that can trigger customs holds, lost exemptions, or delayed clearance \u2014 often discovered only after the shipment is already in transit.',
+        type: 'none'
       },
       {
-        label: 'Solution',
-        title: 'Automated Pre-Shipment Compliance',
-        text: 'Each new shipment triggers a four-point compliance check before the customs broker files the entry: CoO criteria validation, SRS authorization status, HS code mapping, and timestamped human sign-off.',
+        label: 'The Solution',
+        title: 'Automated Pre-Shipment Review',
+        text: 'Each new shipment kicks off an automated four-step review before customs filing: product compliance codes are validated against the importer\u2019s classification rules, authorization documents are checked for expiry with 30-day advance warnings, the certificate of origin is cross-referenced against shipment details, and a timestamped approval record is logged for the team to sign off.',
         type: 'checklist',
         data: [
-          'CAFTA-DR preferential criteria code validated by HS chapter',
-          'SRS export authorization checked \u2014 30-day advance alert if expiring',
-          'HS classification cross-referenced against product code mapping',
-          'Timestamped human sign-off logged for CBP 5-year retention'
+          'Compliance code validated against the product classification',
+          'Authorization documents verified \u2014 30-day advance alert if expiring',
+          'Certificate of origin cross-referenced against shipment details',
+          'Timestamped human approval logged for 5-year customs retention'
         ]
       },
       {
-        label: 'Impact',
-        title: '$4,100+/yr Preserved. Zero Errors.',
-        text: 'MPF exemption maintained across all entries. 78\u201385% reduction in document preparation time. CBP-compliant 5-year retention records auto-generated per shipment.',
-        type: 'metrics',
+        label: 'What It Delivers',
+        title: 'Designed for Compliance Teams Who Can\u2019t Afford Surprises',
+        text: 'The system is designed to deliver four operational outcomes for an importer running it in production: a consistent review on every shipment instead of ad-hoc human spot-checks; earlier discovery of authorization expiry (30 days vs. day-of-shipment); a clean, searchable audit trail that didn\u2019t previously exist; and a meaningful reduction in time spent on per-shipment compliance prep.',
+        type: 'cards',
+        footnote: 'Anchored to 19 CFR Part 10 Subpart J (CAFTA-DR record retention &amp; certification requirements).',
         data: [
-          { val: '$4,100+', lbl: 'MPF Preserved / Year' },
-          { val: '78\u201385%', lbl: 'Prep Time Reduced' },
-          { val: '0', lbl: 'CoO Errors After Validation' }
+          { label: 'Review Coverage', value: 'Every shipment', caption: 'Consistent, replacing ad-hoc spot-checks' },
+          { label: 'Expiry Discovery', value: '30 days ahead', caption: 'Authorization renewal alerts surfaced early' },
+          { label: 'Compliance Records', value: 'Audit-ready', caption: 'Searchable trail generated automatically' }
         ]
       }
     ]
@@ -1076,44 +1206,46 @@ var PROJECTS = [
   {
     id: 'p-land',
     number: '04',
-    name: 'Land Acquisition Intelligence Pipeline',
-    desc: 'Multi-agent AI system that automates rural land prospecting from raw county data to mail-ready acquisition targets \u2014 built on Relevance AI with live Regrid Parcel API integration, zero-tolerance exclusion rules, and full no-code client ownership.',
-    skills: ['Relevance AI', 'Multi-Agent Workflow', 'Regrid Parcel API', 'Knowledge Engineering', 'SOP Automation', 'No-Code Architecture', 'Google Sheets'],
+    name: 'Real Estate Prospect Research System',
+    desc: 'Multi-agent AI system that automates the research stage of a rural land investment business \u2014 from county-level prospecting through parcel-by-parcel review to a clean, mail-ready list of qualified owners. The system replicates the firm\u2019s expert methodology consistently every run, applies non-negotiable exclusion rules to every record, and produces a traceable audit log of every decision the system makes.',
+    skills: [
+      'Multi-agent workflow platform that orchestrates the full process (Relevance AI multi-agent platform)',
+      'Direct connection to a real estate lot finder software API for live parcel data (Regrid)',
+      'Process automation built from the firm\u2019s documented methodology (SOP automation)',
+      'Database and error logs for audit-ready records (Google Sheets / Excel)',
+      'Data safety and error log retention for future product optimization'
+    ],
     linkText: 'Request Demo \u2192',
-    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20Land%20Acquisition%20Pipeline',
+    linkHref: 'mailto:hadidajconsulting@gmail.com?subject=Demo%20Request%3A%20Real%20Estate%20Prospect%20Research',
     slides: [
       {
-        label: 'Challenge',
-        title: 'Days of Manual Research Per County',
-        text: 'A rural land investment firm\u2019s prospecting process consumed days of analyst time per county \u2014 clicking through mapping software parcel by parcel, cross-checking ownership and zoning, and hand-cleaning spreadsheets. Quality varied person to person and the process didn\u2019t scale.',
-        type: 'metrics',
-        data: [
-          { val: 'Days', lbl: 'Manual work per county' },
-          { val: '1,000s', lbl: 'Parcels to filter per run' },
-          { val: 'Variable', lbl: 'Output quality person-to-person' }
-        ]
+        label: 'The Problem',
+        title: 'Expert Research That Doesn\u2019t Scale',
+        text: 'The firm\u2019s prospecting process consumed days of analyst time per county \u2014 clicking through mapping software parcel by parcel, cross-checking ownership and zoning against multiple data sources, then hand-cleaning the results into mailing lists. The quality of the output depended heavily on who did the work and how much time they had that week, which limited how many markets the firm could pursue at once.',
+        type: 'none'
       },
       {
-        label: 'Solution',
-        title: 'Four-Agent Sequenced Pipeline',
-        text: 'A Relevance AI multi-agent Workforce: County Scout ranks target counties \u2192 Parcel Research Engine pulls live data via the Regrid API with automatic pagination \u2192 Zoning Validator cross-checks suitability against authoritative sources \u2192 Sheet Manager applies zero-tolerance exclusion rules, deduplicates by owner and address, and assembles mail-ready batches of 200\u2013300 qualified contacts.',
+        label: 'The Solution',
+        title: 'A Four-Agent Research Pipeline',
+        text: 'Four specialized agents work in sequence to replicate the firm\u2019s full research methodology. The first ranks target counties by market fit. The second pulls every relevant parcel from the live data source and structures it into a working spreadsheet. The third cross-checks each parcel against zoning and suitability rules. The fourth applies the firm\u2019s exclusion rules \u2014 government, federal, cemetery, and institutional ownership are removed without exception \u2014 and assembles the final mail-ready batches.',
         type: 'pipe-steps',
         data: ['County Scout', 'Parcel Engine', 'Zoning Validator', 'Sheet Manager']
       },
       {
-        label: 'Status & Impact',
-        title: 'Research Phase Operational. No-Code.',
-        text: 'Hard exclusion rules \u2014 government, federal, cemetery, and institutional ownership \u2014 enforced with zero tolerance. Every excluded parcel logged with a traceable reason. Client runs and maintains the full pipeline without engineering support.',
-        type: 'metrics',
+        label: 'What It Delivers',
+        title: 'Expert Methodology, Now Repeatable.',
+        text: 'The firm\u2019s expert research process \u2014 once dependent on hours of analyst time and varying with whoever ran it \u2014 now runs as a consistent system the firm operates entirely on its own. Each parcel passes or fails by explicit rule, every batch arrives mail-ready for outreach, and the firm\u2019s prospecting reach scales without adding headcount.',
+        type: 'cards',
         data: [
-          { val: '200\u2013300', lbl: 'Qualified owners per mailing batch' },
-          { val: '0', lbl: 'Exclusion rule leakage' },
-          { val: 'No-code', lbl: 'Client-owned, no dev dependency' }
+          { label: 'Output Batch Size', value: '200\u2013300', caption: 'Qualified owner contacts per mailing' },
+          { label: 'Research Capacity', value: 'Scales with system', caption: 'Not capped by analyst hours' },
+          { label: 'Output Quality', value: 'Standardized', caption: 'No longer dependent on who ran the work' }
         ]
       }
     ]
   }
 ];
+
 
 /* ----------------------------------------------------------------
    RENDER VISUAL for each slide type
@@ -1121,6 +1253,18 @@ var PROJECTS = [
 function renderVisual(slide) {
   var t = slide.type, d = slide.data;
   if (!d) return '';
+
+  // Label → Value → Caption card structure (Slide 3 standard)
+  if (t === 'cards') {
+    return '<div class="s-visual"><div class="lvc-grid">' +
+      d.map(function(c) {
+        return '<div class="lvc-card">' +
+                 '<span class="lvc-label">' + c.label + '</span>' +
+                 '<span class="lvc-value">' + c.value + '</span>' +
+                 '<span class="lvc-caption">' + c.caption + '</span>' +
+               '</div>';
+      }).join('') + '</div></div>';
+  }
 
   if (t === 'metrics') {
     return '<div class="s-visual"><div class="m-grid">' +
@@ -1178,6 +1322,8 @@ function renderVisual(slide) {
 ---------------------------------------------------------------- */
 function buildCard(proj) {
   var slides = proj.slides.map(function(sl, i) {
+    var footnote = sl.footnote ?
+      '<p class="s-footnote">' + sl.footnote + '</p>' : '';
     return '<div class="car-slide" role="tabpanel" ' +
            'aria-label="Slide ' + (i+1) + ': ' + sl.title + '" ' +
            'id="' + proj.id + '-s' + i + '">' +
@@ -1185,6 +1331,7 @@ function buildCard(proj) {
       '<h3 class="s-title">' + sl.title + '</h3>' +
       '<p class="s-text">' + sl.text + '</p>' +
       renderVisual(sl) +
+      footnote +
     '</div>';
   }).join('');
 
@@ -1200,11 +1347,15 @@ function buildCard(proj) {
     return '<span class="skill-tag">' + s + '</span>';
   }).join('');
 
+  var badge = proj.badge ?
+    '<span class="p-badge">' + proj.badge + '</span>' : '';
+
   return '<article class="p-card" role="listitem" aria-labelledby="' + proj.id + '-name">' +
     '<div class="p-info">' +
       '<span class="p-num">' + proj.number + '</span>' +
-      '<h2 class="p-name" id="' + proj.id + '-name">' + proj.name + '</h2>' +
+      '<h2 class="p-name" id="' + proj.id + '-name">' + proj.name + badge + '</h2>' +
       '<p class="p-desc">' + proj.desc + '</p>' +
+      '<p class="p-skills-label">Tools used</p>' +
       '<div class="p-skills">' + skills + '</div>' +
       '<a href="' + proj.linkHref + '" class="p-link">' + proj.linkText + '</a>' +
     '</div>' +
